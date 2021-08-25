@@ -186,5 +186,63 @@ def merge(arr1, arr2)
     temp
 end
 
-a = [2, 5, 6, 9, 3, 1]
-p merge_sort(a)
+
+# p merge_sort(a)
+
+#create a empty arr
+#push into it all the subsets of the current arr
+#recursively call again with the arr unshifted off
+
+#base -> empty arr
+
+#step -> concat onto the empty all subsets
+
+#helper function that accepts an init num and an array
+#return an array with all subsets with that number AND the array itself 
+# def subsets(nums)
+#     result = []
+
+#     (0...nums.length).each do |i|
+        
+#     end
+
+#     return result if nums.empty?
+
+#     result.concat(create_subs(nums[0], nums))
+# end
+
+# def create_subs(num, arr) #   1 || [2, 3]
+#     result = []
+    
+#     result.concat(num)
+#     result.concat(num) + create_subs(arr.shift, arr)
+
+#     result
+# end
+# a = [2, 5, 6, 9, 3, 1]
+# p subsets(a)
+
+#have an achor
+#have a result arr and a temp arr
+#make a loop going through the entire arr
+#idex becomes anchor
+#recurs call a helper method -> anchor and the rest of the arr
+#return the value into the temp arr
+#shovel temp arr into the result arr
+
+def perm(arr)
+    result = []
+
+    (0...arr.length).each do |i|
+        temp = []
+        pass_thru = arr.except(arr[i])
+        temp << arr[i].concat(help(arr))
+        else
+            
+        end
+    end
+end
+
+def help(arr)
+
+end
