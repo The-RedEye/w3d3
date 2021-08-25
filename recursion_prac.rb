@@ -72,16 +72,58 @@ end
 #cur idx - cur idx - 1
 #to get fib(n) -> you will need prev 2 -> fib(n - 1) + fib(n - 2)
 
+#------------------NEW CODE
+# create loop, go through until i = n
+# shovel fib(n) into result
+#retun result
+
+
 def fibonacci(n)
-    return [] if n == 0
-    return [1] if n == 1
-    return [1, 1] if n == 2
-    return 0 if n > 0
 
     result = []
-    (1..n).each do |i|
-        result.concat(fibonacci(i - 1) + fibonacci(i - 2))
+
+    (1...n).each do |i|
+        result << fib(i)
+    end
+
+    result
+end
+
+def fib(n)
+    return 1 if n <=2
+
+    fib(n-1) +  fib(n-2)
+end
+
+# p fibonacci(10)
+
+#find midpoint of array
+#compare array[midpoint] == target
+    #if array[midpoint]==target, return midpoint
+    #if midpoint>target , target in lower half. recurse from 0...midpoint, (Return 0+call)
+    #else, target in upper, recurse midpoint+1...arr.length -(Return:mid + call)
+
+
+def bsearch(arr, target)
+    # debugger
+    return nil if !arr.include?(target)
+    midpoint = arr.length/2
+   
+    # debugger
+    if arr[midpoint]==target
+        return midpoint
+    elsif arr[midpoint]>target
+        return 0 + bsearch(arr[0...midpoint], target)
+    else
+        return midpoint+1 + bsearch(arr[midpoint+1..-1], target)
     end
 
 end
-
+#  p '-------------------'
+# p bsearch([1, 2, 3], 1) # => 0
+# p bsearch([2, 3, 4, 5], 3) # => 1
+# p bsearch([2, 4, 6, 8, 10], 6) # => 2
+# p bsearch([1, 3, 4, 5, 9], 5) # => 3
+# p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
+# p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
+# p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
