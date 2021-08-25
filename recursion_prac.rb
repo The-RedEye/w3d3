@@ -138,9 +138,11 @@ def merge_sort(arr)
     if arr.length > 2
         first_half = arr[0...midpoint]
         second_half = arr[midpoint...arr.length]
-        #debugger
+                            #debugger
         return merge(merge_sort(first_half), merge_sort(second_half))
         #return merge(merge_sort(arr[0...midpoint]), merge_sort(arr[midpoint...arr.length]))
+        p "merge complete"
+                            #debugger
     elsif arr.length == 1
         return arr
     else
@@ -160,23 +162,27 @@ end
 
 def merge(arr1, arr2)
     temp = []
-    
+                    #debugger
     count1 = 0
     count2 = 0
 
-    while count1 < arr1.length - 1 && count2 < arr2.length - 1
-        #debugger
-        if arr1[count1] < arr2[count2]
+    while count1 < arr1.length || count2 < arr2.length
+                    #debugger
+        if arr1[count1] == nil
+            return temp.concat(arr2[count2...arr2.length])
+        elsif arr2[count2]== nil
+            return temp.concat(arr1[count1...arr1.length])
+        elsif arr1[count1] < arr2[count2]
             temp << arr1[count1]
             count1 += 1 
-           # debugger
+                    #debugger
         else
             temp << arr2[count2]
             count2 += 1
-            #debugger
+                    #debugger
         end
     end
-
+    #debugger
     temp
 end
 
