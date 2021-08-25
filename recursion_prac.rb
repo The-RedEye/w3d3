@@ -127,3 +127,58 @@ end
 # p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
 # p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
 # p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
+
+# create a recursive func that splits in half if length of array is > 2
+# base case :length is two -> swap the two elements if they arent in order
+# else return
+# create a merge helper method to merge them together
+
+def merge_sort(arr)
+    midpoint = arr.length / 2
+    if arr.length > 2
+        first_half = arr[0...midpoint]
+        second_half = arr[midpoint...arr.length]
+        #debugger
+        return merge(merge_sort(first_half), merge_sort(second_half))
+        #return merge(merge_sort(arr[0...midpoint]), merge_sort(arr[midpoint...arr.length]))
+    elsif arr.length == 1
+        return arr
+    else
+        if arr[0] < arr[1]
+            return arr
+        else
+            return [arr[1], arr[0]]
+        end
+    end
+end
+
+# two counters 1 for first 1 for 2nd
+# compare the first two eles and shovel in the smaller ele inc counter 1
+# while both counters are < length of respec arrays -> do this loop where
+# we compare the element @ the index to the last <<'d ele
+# which ever one is smaller gets <<'d in AND inc the respec counter 
+
+def merge(arr1, arr2)
+    temp = []
+    
+    count1 = 0
+    count2 = 0
+
+    while count1 < arr1.length - 1 && count2 < arr2.length - 1
+        #debugger
+        if arr1[count1] < arr2[count2]
+            temp << arr1[count1]
+            count1 += 1 
+           # debugger
+        else
+            temp << arr2[count2]
+            count2 += 1
+            #debugger
+        end
+    end
+
+    temp
+end
+
+a = [2, 5, 6, 9, 3, 1]
+p merge_sort(a)
