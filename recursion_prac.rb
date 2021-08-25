@@ -69,5 +69,19 @@ end
 # ]
 # p deep_dup(robot_parts)
 
+#cur idx - cur idx - 1
+#to get fib(n) -> you will need prev 2 -> fib(n - 1) + fib(n - 2)
 
+def fibonacci(n)
+    return [] if n == 0
+    return [1] if n == 1
+    return [1, 1] if n == 2
+    return 0 if n > 0
+
+    result = []
+    (1..n).each do |i|
+        result.concat(fibonacci(i - 1) + fibonacci(i - 2))
+    end
+
+end
 
